@@ -1,4 +1,4 @@
-package org.hse.lab1;
+package org.hse.android;
 
 import org.junit.Test;
 

@@ -1,8 +1,6 @@
-package org.hse.lab1;
+package org.hse.android;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -28,20 +26,12 @@ public class BaseActivity extends AppCompatActivity {
         Button studentButton = findViewById(R.id.studentButton);
         Button teacherButton = findViewById(R.id.teacherButton);
 
-        studentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("BaseActivity", "Student button clicked!");
-                Toast.makeText(BaseActivity.this, "Вы выбрали расписание для студентов", Toast.LENGTH_SHORT).show();
-            }
-        });
+        studentButton.setOnClickListener(v ->
+                Toast.makeText(BaseActivity.this, getString(R.string.student_click), Toast.LENGTH_SHORT).show()
+        );
 
-        teacherButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("BaseActivity", "Teacher button clicked!");
-                Toast.makeText(BaseActivity.this, "Вы выбрали расписание для преподавателей", Toast.LENGTH_SHORT).show();
-            }
-        });
+        teacherButton.setOnClickListener(v ->
+                Toast.makeText(BaseActivity.this, getString(R.string.teacher_click), Toast.LENGTH_SHORT).show()
+        );
     }
 }

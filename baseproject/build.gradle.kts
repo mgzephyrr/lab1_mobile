@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "org.hse.lab1"
+    namespace = "org.hse.android"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "org.hse.lab1"
+        applicationId = "org.hse.android"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

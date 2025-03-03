@@ -2,7 +2,9 @@
     <string name="app_name">DemoProject</string>
     <string name="AddButtonName">BUTTON1</string>
     <string name="MultButtonName">BUTTON2</string>
-    <string name="InputNumberText">Enter number (from 1 to 10000)</string>
+    <string name="InputNumberText">Enter number (from 2 to 10000)</string>
     <string name="TopText">Input number of elements</string>
     <string name="resultText">Result:</string>
+    <string name="enter_valid_message">Please enter a valid number between %d and %d</string>
+    <string name="result_string">Result: %d</string>
 </resources>

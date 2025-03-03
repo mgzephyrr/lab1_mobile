@@ -6,14 +6,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class DemoActivity extends AppCompatActivity {
+    public static final int MIN = 2;
+    public static final int MAX = 10000;
     private TextView result;
     private EditText number;
 
@@ -27,45 +24,39 @@ public class DemoActivity extends AppCompatActivity {
         Button button2 = findViewById(R.id.button2);
         result = findViewById(R.id.resultText);
 
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    String numberVal = number.getText().toString();
-                    if (numberVal.isEmpty()) {
-                        numberVal = "0";
-                    }
-                    int number = Integer.parseInt(numberVal);
-                    validateNumberRange(number);        // проверка значения на диапазон (от 1 до 10000)
-                    int sum = sumNumbersUpTo(number);
-                    result.setText("Result: " + sum);   // устанавливаем текст в Result
-                    result.setVisibility(View.VISIBLE); // чтобы показать результат
-                } catch (NumberFormatException e) {
-                    Toast.makeText(DemoActivity.this, "Please enter a valid number between 1 and 10000", Toast.LENGTH_SHORT).show();
-                } catch (OutOfRangeException e) {
-                    Toast.makeText(DemoActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        button1.setOnClickListener(v -> {
+            try {
+                String numberVal = number.getText().toString();
+                if (numberVal.isEmpty()) {
+                    numberVal = "0";
                 }
+                int number = Integer.parseInt(numberVal);
+                validateNumberRange(number);        // проверка значения на диапазон (от 2 до 10000)
+                int sum = sumNumbersUpTo(number);
+                result.setText("Result: " + sum);   // устанавливаем текст в Result
+                result.setVisibility(View.VISIBLE); // чтобы показать результат
+            } catch (NumberFormatException e) {
+                Toast.makeText(DemoActivity.this, String.format("Please enter a valid number between %d and %d", MIN, MAX), Toast.LENGTH_SHORT).show();
+            } catch (OutOfRangeException e) {
+                Toast.makeText(DemoActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    String numberVal = number.getText().toString();
-                    if (numberVal.isEmpty()) {
-                        numberVal = "0";
-                    }
-                    int number = Integer.parseInt(numberVal);
-                    validateNumberRange(number);        // проверка значения на диапазон (от 1 до 10000)
-                    long product = multiplyEvenNumbersUpTo(number);
-                    result.setText("Result: " + product);   // устанавливаем текст в Result
-                    result.setVisibility(View.VISIBLE);     // чтобы показать результат
-                } catch (NumberFormatException e) {
-                    Toast.makeText(DemoActivity.this, "Please enter a valid number", Toast.LENGTH_SHORT).show();
-                } catch (OutOfRangeException | ArithmeticException e) {
-                    Toast.makeText(DemoActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        button2.setOnClickListener(v -> {
+            try {
+                String numberVal = number.getText().toString();
+                if (numberVal.isEmpty()) {
+                    numberVal = "0";
                 }
+                int number = Integer.parseInt(numberVal);
+                validateNumberRange(number);        // проверка значения на диапазон (от 2 до 10000)
+                long product = multiplyEvenNumbersUpTo(number);
+                result.setText("Result: " + product);   // устанавливаем текст в Result
+                result.setVisibility(View.VISIBLE);     // чтобы показать результат
+            } catch (NumberFormatException e) {
+                Toast.makeText(DemoActivity.this, "Please enter a valid number", Toast.LENGTH_SHORT).show();
+            } catch (OutOfRangeException | ArithmeticException e) {
+                Toast.makeText(DemoActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -90,8 +81,8 @@ public class DemoActivity extends AppCompatActivity {
     }
 
     private void validateNumberRange(int number) throws OutOfRangeException {
-        if (number < 1 || number > 10000) {
-            throw new OutOfRangeException("Please enter a number between 1 and 10000");
+        if (number < MIN || number > MAX) {
+            throw new OutOfRangeException(String.format("Please enter a number between %d and %d", MIN, MAX));
         }
     }
 }

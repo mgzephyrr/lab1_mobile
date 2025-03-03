@@ -2,4 +2,6 @@
     <string name="app_name">Timetable for HSE FE</string>
     <string name="student_schedule">РАСПИСАНИЕ ДЛЯ СТУДЕНТОВ</string>
     <string name="teacher_schedule">РАСПИСАНИЕ ДЛЯ ПРЕПОДАВАТЕЛЯ</string>
+    <string name="student_click">Вы выбрали расписание для студентов</string>
+    <string name="teacher_click">Вы выбрали расписание для преподавателей</string>
 </resources>
